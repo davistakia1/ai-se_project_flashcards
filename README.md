@@ -9,3 +9,9 @@ A flashcard app with decks of flashcards that can be viewed in a carousel.
 ## Technologies used
 
 HTML, CSS, and JavaScript
+
+## Deployed Site
+
+Check out [this site](https://davistakia1.github.io/ai-se_project_flashcards) on GitHub Pages.
+
+
