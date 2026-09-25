@@ -1,0 +1,104 @@
+.decks {
+}
+.decks__title {
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-weight: 700;
+  font-size: 40px;
+}
+.decks__list {
+  list-style-type: none;
+  padding-left: 0;
+  margin: 0;
+  gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+.decks__new-deck-btn {
+  width: 325px;
+  height: 205px;
+  background-color: #d9d9d9;
+  color: #1a1a1a80;
+  padding: 20px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: start;
+  justify-content: left;
+}
+.decks__new-deck-title {
+  margin: 0;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+}
+.deck {
+  width: 325px;
+  height: 205px;
+  background-color: #64d583;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+.deck__link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.deck__title {
+  margin-top: 0;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+}
+.deck__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.deck__delete-btn {
+  width: 24px;
+  height: 24px;
+  background: transparent url("../images/delete.svg") no-repeat center;
+  opacity: 0.5;
+  cursor: pointer;
+  border: none;
+  z-index: 2;
+}
+.deck_color_green {
+  background-color: #64d583;
+  cursor: pointer;
+}
+.deck_color_blue {
+  background-color: #91a8f9;
+  cursor: pointer;
+}
+.deck_color_pink {
+  background-color: #ee92d7;
+  cursor: pointer;
+}
+.deck_color_purple {
+  background-color: #aa8ef0;
+  cursor: pointer;
+}
+.deck_color_orange {
+  background-color: #ee955e;
+  cursor: pointer;
+}
+.deck_color_yellow {
+  background-color: #f5d770;
+  cursor: pointer;
+}
+.deck__delete-btn:hover {
+  opacity: 100%;
+}
+.deck__new-deck-btn:hover {
+  background-color: #c5c5c5;
+  color: #1a1a1a;
+}
