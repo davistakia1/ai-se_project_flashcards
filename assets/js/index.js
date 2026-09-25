@@ -7,31 +7,31 @@ const notFoundSection = document.querySelector("#not-found");
 const carouselSection = document.querySelector(".carousel");
 const mainContent = document.querySelector(".page__main-content");
 const deckTemplate = document.querySelector("#deck-template");
-const deckList = document.querySelector(".decks__list");
+const deckList = document.querySelector(".gallery__list");
 
 function createDeckEl(item) {
   const deckElement = deckTemplate.content
-    .querySelector(".deck")
+    .querySelector(".card")
     .cloneNode(true);
 
-  const deckLink = deckElement.querySelector(".deck__link");
+  const deckLink = deckElement.querySelector(".card__link");
   deckLink.href = `#carousel/${item.id}`;
   // Set the deck title
 
-  deckElement.querySelector(".deck__title").textContent = item.name;
+  deckElement.querySelector(".card__title").textContent = item.name;
 
   // Set the card count
-  deckElement.querySelector(".deck__count").textContent =
+  deckElement.querySelector(".card__count").textContent =
     `${item.cards.length} cards`;
 
   // Set the deck color
   const colorName = hexToString(item.color);
 
-  deckElement.classList.remove("deck_color_green");
-  deckElement.classList.add(`deck_color_${colorName}`);
+  deckElement.classList.remove("card_color_green");
+  deckElement.classList.add(`card_color_${colorName}`);
 
   // Delete button
-  const deleteBtn = deckElement.querySelector(".deck__delete-btn");
+  const deleteBtn = deckElement.querySelector(".card__delete-btn");
 
   deleteBtn.addEventListener("click", () => {
     deckElement.remove();
