@@ -1,10 +1,14 @@
 import { decks, getDeckByID } from "./decks.js";
 import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
+import { renderDeckView } from "./deck-view.js";
 
 const homeSection = document.querySelector("#home");
 const notFoundSection = document.querySelector("#not-found");
 const carouselSection = document.querySelector(".carousel");
+
+const deckSection = document.querySelector("#deck-view");
+
 const mainContent = document.querySelector(".page__main-content");
 const deckTemplate = document.querySelector("#deck-template");
 const deckList = document.querySelector(".gallery__list");
@@ -15,7 +19,7 @@ function createDeckEl(item) {
     .cloneNode(true);
 
   const deckLink = deckElement.querySelector(".card__link");
-  deckLink.href = `#carousel/${item.id}`;
+  deckLink.href = `#deck/${item.id}`;
   // Set the deck title
 
   deckElement.querySelector(".card__title").textContent = item.name;
@@ -53,6 +57,7 @@ function renderCurrentView() {
     homeSection.style.display = "block";
     notFoundSection.style.display = "none";
     carouselSection.style.display = "none";
+    deckSection.style.display = "none";
     mainContent.classList.remove("page__main-content_location_carousel");
   } else if (hash.startsWith("#carousel/")) {
     const currentDeckID = hash.split("/")[1];
@@ -63,12 +68,24 @@ function renderCurrentView() {
     homeSection.style.display = "none";
     notFoundSection.style.display = "none";
     carouselSection.style.display = "flex";
+    deckSection.style.display = "none";
     mainContent.classList.add("page__main-content_location_carousel");
+  } else if (hash.startsWith("#deck/")) {
+    const currentDeckID = hash.split("/")[1];
+    const currentDeck = getDeckByID(currentDeckID);
+
+    renderDeckView(currentDeck);
+
+    homeSection.style.display = "none";
+    notFoundSection.style.display = "none";
+    carouselSection.style.display = "none";
+    deckSection.style.display = "block";
   } else {
     homeSection.style.display = "none";
     notFoundSection.style.display = "flex";
     carouselSection.style.display = "none";
     mainContent.classList.remove("page__main-content_location_carousel");
+    deckSection.style.display = "none";
   }
 }
 
