@@ -27,3 +27,69 @@
   background-color: #f5d770;
   cursor: pointer;
 }
+
+.card__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card__btn {
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.card__btn_type_flip {
+  background-image: url("/assets/images/flip.svg");
+}
+
+.card__btn_type_delete {
+  background-image: url("/assets/images/delete.svg");
+}
+
+.card__btn:hover {
+  opacity: 1;
+}
+
+.card__practice-btn {
+  width: 103px;
+  height: 44px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px 14px;
+  font-family: Inter, sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card__practice-btn:hover {
+  background:
+    linear-gradient(0deg, #1a1a1a, #1a1a1a),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 55.81%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
+  background-blend-mode: overlay;
+}
+.card_color_white {
+  background-color: #ffffff;
+}
+
+.card__row_type_deck-view {
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}

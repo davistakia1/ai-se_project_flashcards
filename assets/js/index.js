@@ -8,6 +8,9 @@ const notFoundSection = document.querySelector("#not-found");
 const carouselSection = document.querySelector(".carousel");
 
 const deckSection = document.querySelector("#deck-view");
+const deckPracticeButton = document.querySelector(
+  "#deck-view .gallery__practice-btn",
+);
 
 const mainContent = document.querySelector(".page__main-content");
 const deckTemplate = document.querySelector("#deck-template");
@@ -35,7 +38,7 @@ function createDeckEl(item) {
   deckElement.classList.add(`card_color_${colorName}`);
 
   // Delete button
-  const deleteBtn = deckElement.querySelector(".card__delete-btn");
+  const deleteBtn = deckElement.querySelector(".card__btn_type_delete");
 
   deleteBtn.addEventListener("click", () => {
     deckElement.remove();
@@ -75,6 +78,10 @@ function renderCurrentView() {
     const currentDeck = getDeckByID(currentDeckID);
 
     renderDeckView(currentDeck);
+
+    deckPracticeButton.onclick = () => {
+      window.location.hash = `#carousel/${currentDeck.id}`;
+    };
 
     homeSection.style.display = "none";
     notFoundSection.style.display = "none";

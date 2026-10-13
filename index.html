@@ -70,7 +70,7 @@
             <p class="card__count"></p>
 
             <button
-              class="card__delete-btn"
+              class="card__btn card__btn_type_delete"
               type="button"
               aria-label="delete this deck"
             ></button>
@@ -79,17 +79,16 @@
       </template>
       <template id="card-template">
         <li class="card card_color_green">
-          <h3 class="card__title"></h3>
+          <div class="card__row card__row_type_deck-view">
+            <h3 class="card__title"></h3>
 
-          <div class="card__row">
             <button
-              class="card__practice-btn"
+              class="card__btn card__btn_type_flip"
               type="button"
-              aria-label="Practice this deck"
+              aria-label="Flip this card"
             ></button>
-
             <button
-              class="card__delete-btn"
+              class="card__btn card__btn_type_delete"
               type="button"
               aria-label="delete this deck"
             ></button>
