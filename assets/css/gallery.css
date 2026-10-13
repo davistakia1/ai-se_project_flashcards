@@ -143,3 +143,17 @@
   background-color: #c5c5c5;
   color: #1a1a1a;
 }
+@media screen and (max-width: 600px) {
+  .gallery__list {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .gallery__title {
+    font-size: 32px;
+  }
+  .gallery__new-card-btn {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 325 / 205;
+  }
+}
