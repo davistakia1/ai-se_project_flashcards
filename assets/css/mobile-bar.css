@@ -1,0 +1,46 @@
+.mobile-bar {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .mobile-bar {
+    display: flex;
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    padding: 40px 20px 20px;
+    box-sizing: border-box;
+    background: linear-gradient(to bottom, transparent 0%, #ececec 35%);
+    z-index: 10;
+  }
+
+  .mobile-bar__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    border: none;
+    border-radius: 12px;
+    background-color: #1a1a1a;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .footer {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    z-index: 11;
+  }
+  .page::after {
+    content: "";
+    display: block;
+    height: 200px;
+    flex-shrink: 0;
+  }
+}
