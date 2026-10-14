@@ -151,9 +151,4 @@
   .gallery__title {
     font-size: 32px;
   }
-  .gallery__new-card-btn {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 325 / 205;
-  }
 }

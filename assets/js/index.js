@@ -56,6 +56,9 @@ function renderDeckEl(item) {
 function renderCurrentView() {
   const hash = window.location.hash || "#home";
 
+  const mobileBar = document.querySelector(".mobile-bar");
+  mobileBar.style.display = hash === "#home" ? "" : "none";
+
   if (hash === "#home") {
     homeSection.style.display = "block";
     notFoundSection.style.display = "none";
