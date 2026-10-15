@@ -52,6 +52,14 @@ function renderDeckEl(item) {
 
   deckList.prepend(deckElement);
 }
+function showView(currentSection, display) {
+  homeSection.style.display = "none";
+  notFoundSection.style.display = "none";
+  carouselSection.style.display = "none";
+  deckSection.style.display = "none";
+
+  currentSection.style.display = display;
+}
 
 function renderCurrentView() {
   const hash = window.location.hash || "#home";
@@ -60,10 +68,7 @@ function renderCurrentView() {
   mobileBar.style.display = hash === "#home" ? "" : "none";
 
   if (hash === "#home") {
-    homeSection.style.display = "block";
-    notFoundSection.style.display = "none";
-    carouselSection.style.display = "none";
-    deckSection.style.display = "none";
+    showView(homeSection, "block");
     mainContent.classList.remove("page__main-content_location_carousel");
     document.querySelector(".page").classList.remove("page_no-mobile-bar");
   } else if (hash.startsWith("#carousel/")) {
@@ -72,10 +77,7 @@ function renderCurrentView() {
 
     renderCarouselView(currentDeck);
 
-    homeSection.style.display = "none";
-    notFoundSection.style.display = "none";
-    carouselSection.style.display = "flex";
-    deckSection.style.display = "none";
+    showView(carouselSection, "flex");
     mainContent.classList.add("page__main-content_location_carousel");
     document.querySelector(".page").classList.add("page_no-mobile-bar");
   } else if (hash.startsWith("#deck/")) {
@@ -89,17 +91,11 @@ function renderCurrentView() {
       window.location.hash = `#carousel/${currentDeck.id}`;
     };
 
-    homeSection.style.display = "none";
-    notFoundSection.style.display = "none";
-    carouselSection.style.display = "none";
-    deckSection.style.display = "block";
+    showView(deckSection, "block");
   } else {
-    homeSection.style.display = "none";
-    notFoundSection.style.display = "flex";
-    carouselSection.style.display = "none";
+    showView(notFoundSection, "flex");
     mainContent.classList.remove("page__main-content_location_carousel");
     document.querySelector(".page").classList.add("page_no-mobile-bar");
-    deckSection.style.display = "none";
   }
 }
 
