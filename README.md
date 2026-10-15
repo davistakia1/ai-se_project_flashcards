@@ -4,7 +4,13 @@
 
 ## Features
 
-A flashcard app with decks of flashcards that can be viewed in a carousel.
+A flashcard application that allows users to study information using organized decks of flashcards.
+
+- **Home View:** Displays available flashcard decks.
+- **Open Deck View:** Allows users to open a deck, view its flashcards, and practice using the carousel.
+- **Flashcard Carousel:** Allows users to flip cards to reveal answers and navigate between flashcards.
+- **Confirmation Modal:** Displays a confirmation dialog before deleting a deck or flashcard.
+- **Responsive Design:** Adapts the home, deck, and carousel views to smaller screens, including mobile devices.
 
 ## Technologies used
 
