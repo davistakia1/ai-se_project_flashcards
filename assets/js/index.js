@@ -65,6 +65,7 @@ function renderCurrentView() {
     carouselSection.style.display = "none";
     deckSection.style.display = "none";
     mainContent.classList.remove("page__main-content_location_carousel");
+    document.querySelector(".page").classList.remove("page_no-mobile-bar");
   } else if (hash.startsWith("#carousel/")) {
     const currentDeckID = hash.split("/")[1];
     const currentDeck = getDeckByID(currentDeckID);
@@ -76,11 +77,13 @@ function renderCurrentView() {
     carouselSection.style.display = "flex";
     deckSection.style.display = "none";
     mainContent.classList.add("page__main-content_location_carousel");
+    document.querySelector(".page").classList.add("page_no-mobile-bar");
   } else if (hash.startsWith("#deck/")) {
     const currentDeckID = hash.split("/")[1];
     const currentDeck = getDeckByID(currentDeckID);
 
     renderDeckView(currentDeck);
+    document.querySelector(".page").classList.remove("page_no-mobile-bar");
 
     deckPracticeButton.onclick = () => {
       window.location.hash = `#carousel/${currentDeck.id}`;
@@ -95,6 +98,7 @@ function renderCurrentView() {
     notFoundSection.style.display = "flex";
     carouselSection.style.display = "none";
     mainContent.classList.remove("page__main-content_location_carousel");
+    document.querySelector(".page").classList.add("page_no-mobile-bar");
     deckSection.style.display = "none";
   }
 }

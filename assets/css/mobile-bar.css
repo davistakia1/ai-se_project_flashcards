@@ -37,11 +37,17 @@
     text-align: center;
     z-index: 11;
   }
+  .page_no-mobile-bar .footer {
+    position: static;
+  }
   .page::after {
     content: "";
     display: block;
     height: 200px;
     flex-shrink: 0;
+  }
+  .page_no-mobile-bar::after {
+    display: none;
   }
   .gallery__new-card-btn,
   .gallery__practice-btn {

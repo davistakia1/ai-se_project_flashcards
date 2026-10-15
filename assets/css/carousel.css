@@ -37,7 +37,7 @@
   font-size: 32px;
 }
 
-.carousel__row {
+.carousel__grid {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,4 +100,31 @@
 
 .carousel__btn_disabled {
   opacity: 20%;
+}
+@media screen and (max-width: 600px) {
+  .carousel__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "card card card"
+      "left flip right";
+  }
+  .carousel__card {
+    grid-area: card;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 440 / 300;
+  }
+  .carousel__btn_type_left {
+    grid-area: left;
+    justify-self: center;
+  }
+  .carousel__btn_type_right {
+    grid-area: right;
+    justify-self: center;
+  }
+  .carousel__btn_type_flip {
+    grid-area: flip;
+    justify-self: center;
+  }
 }
