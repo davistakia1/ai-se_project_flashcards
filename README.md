@@ -15,3 +15,9 @@ A flashcard application that allows users to study information using organized d
 ## Technologies used
 
 HTML, CSS, and JavaScript
+
+## Deployed Site
+
+Check out [this site](https://davistakia1.github.io/ai-se_project_flashcards) on GitHub Pages.
+
+
