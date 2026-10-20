@@ -52,7 +52,7 @@
   .gallery__new-card-btn,
   .gallery__practice-btn {
     position: fixed;
-    bottom: 110px;
+    bottom: 70px;
     height: 44px;
     background-color: #1a1a1a;
     color: #ffffff;
@@ -71,12 +71,12 @@
     transform: translateX(-50%);
   }
   .gallery__practice-btn {
-    bottom: 110px;
+    bottom: 70px;
     left: 20px;
     width: calc(50% - 30px);
   }
   .gallery__new-card-btn_location_deck-view {
-    bottom: 110px;
+    bottom: 70px;
     left: auto;
     right: 20px;
     transform: none;
