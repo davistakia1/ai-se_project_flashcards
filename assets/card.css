@@ -45,11 +45,11 @@
 }
 
 .card__btn_type_flip {
-  background-image: url("/assets/images/flip.svg");
+  background-image: url("./images/flip.svg");
 }
 
 .card__btn_type_delete {
-  background-image: url("/assets/images/delete.svg");
+  background-image: url("./images/delete.svg");
 }
 
 .card__btn:hover {
