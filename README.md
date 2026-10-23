@@ -20,4 +20,6 @@ HTML, CSS, and JavaScript
 
 Check out [this site](https://davistakia1.github.io/ai-se_project_flashcards) on GitHub Pages.
 
+## Project Pitch Video
 
+Check out [my Project Pitch video](https://www.loom.com/share/00993a878c0c4c0fa0cfbead50ccebb8), where I demonstrate Tech In A Flash, explain the technologies I used, and discuss challenges I faced while building the application.
