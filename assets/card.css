@@ -89,9 +89,20 @@
 }
 
 .card__row_type_deck-view {
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24px 24px;
+  align-items: start;
+  gap: 12px;
+}
+
+.card__row_type_deck-view .card__title {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.card__row_type_deck-view .card__btn {
+  padding: 0;
 }
 @media screen and (max-width: 600px) {
   .card {

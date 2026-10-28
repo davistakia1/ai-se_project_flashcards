@@ -3,6 +3,9 @@ import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
 
+const page = document.querySelector(".page");
+const mobileBar = document.querySelector(".mobile-bar");
+
 const homeSection = document.querySelector("#home");
 const notFoundSection = document.querySelector("#not-found");
 const carouselSection = document.querySelector(".carousel");
@@ -64,13 +67,12 @@ function showView(currentSection, display) {
 function renderCurrentView() {
   const hash = window.location.hash || "#home";
 
-  const mobileBar = document.querySelector(".mobile-bar");
   mobileBar.style.display = hash === "#home" ? "" : "none";
 
   if (hash === "#home") {
     showView(homeSection, "block");
     mainContent.classList.remove("page__main-content_location_carousel");
-    document.querySelector(".page").classList.remove("page_no-mobile-bar");
+    page.classList.remove("page_no-mobile-bar");
   } else if (hash.startsWith("#carousel/")) {
     const currentDeckID = hash.split("/")[1];
     const currentDeck = getDeckByID(currentDeckID);
@@ -79,13 +81,13 @@ function renderCurrentView() {
 
     showView(carouselSection, "flex");
     mainContent.classList.add("page__main-content_location_carousel");
-    document.querySelector(".page").classList.add("page_no-mobile-bar");
+    page.classList.add("page_no-mobile-bar");
   } else if (hash.startsWith("#deck/")) {
     const currentDeckID = hash.split("/")[1];
     const currentDeck = getDeckByID(currentDeckID);
 
     renderDeckView(currentDeck);
-    document.querySelector(".page").classList.remove("page_no-mobile-bar");
+    page.classList.remove("page_no-mobile-bar");
 
     deckPracticeButton.onclick = () => {
       window.location.hash = `#carousel/${currentDeck.id}`;
@@ -95,7 +97,7 @@ function renderCurrentView() {
   } else {
     showView(notFoundSection, "flex");
     mainContent.classList.remove("page__main-content_location_carousel");
-    document.querySelector(".page").classList.add("page_no-mobile-bar");
+    page.classList.add("page_no-mobile-bar");
   }
 }
 
