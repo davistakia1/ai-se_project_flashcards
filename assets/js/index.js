@@ -60,9 +60,12 @@ function showView(currentSection, display) {
   notFoundSection.style.display = "none";
   carouselSection.style.display = "none";
   deckSection.style.display = "none";
+  newDeckSection.style.display = "none";
 
   currentSection.style.display = display;
 }
+
+const newDeckSection = document.querySelector("#new-deck-view");
 
 function renderCurrentView() {
   const hash = window.location.hash || "#home";
@@ -73,6 +76,11 @@ function renderCurrentView() {
     showView(homeSection, "block");
     mainContent.classList.remove("page__main-content_location_carousel");
     page.classList.remove("page_no-mobile-bar");
+  } else if (hash === "#new-deck-view" || hash === "#new-deck") {
+    newDeckSection.hidden = false;
+    showView(newDeckSection, "block");
+    mainContent.classList.remove("page__main-content_location_carousel");
+    page.classList.add("page_no-mobile-bar");
   } else if (hash.startsWith("#carousel/")) {
     const currentDeckID = hash.split("/")[1];
     const currentDeck = getDeckByID(currentDeckID);
@@ -106,3 +114,9 @@ decks.forEach(renderDeckEl);
 window.addEventListener("hashchange", renderCurrentView);
 
 renderCurrentView();
+
+const newDeckButton = document.querySelector("#home .gallery__new-card-btn");
+
+newDeckButton.addEventListener("click", () => {
+  window.location.hash = "#new-deck-view";
+});
