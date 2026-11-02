@@ -2,6 +2,7 @@ import { decks, getDeckByID } from "./decks.js";
 import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
+import { disableSubmitBtn } from "./new-deck-view.js";
 
 const page = document.querySelector(".page");
 const mobileBar = document.querySelector(".mobile-bar");
@@ -79,6 +80,8 @@ function renderCurrentView() {
   } else if (hash === "#new-deck-view" || hash === "#new-deck") {
     newDeckSection.hidden = false;
     showView(newDeckSection, "block");
+    disableSubmitBtn();
+
     mainContent.classList.remove("page__main-content_location_carousel");
     page.classList.add("page_no-mobile-bar");
   } else if (hash.startsWith("#carousel/")) {
