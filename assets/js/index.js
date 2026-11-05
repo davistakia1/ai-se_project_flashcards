@@ -88,6 +88,13 @@ function renderCurrentView() {
     const currentDeckID = hash.split("/")[1];
     const currentDeck = getDeckByID(currentDeckID);
 
+    if (!currentDeck) {
+      showView(notFoundSection, "flex");
+      mainContent.classList.remove("page__main-content_location_carousel");
+      page.classList.add("page_no-mobile-bar");
+      return;
+    }
+
     renderCarouselView(currentDeck);
 
     showView(carouselSection, "flex");
@@ -96,6 +103,13 @@ function renderCurrentView() {
   } else if (hash.startsWith("#deck/")) {
     const currentDeckID = hash.split("/")[1];
     const currentDeck = getDeckByID(currentDeckID);
+
+    if (!currentDeck) {
+      showView(notFoundSection, "flex");
+      mainContent.classList.remove("page__main-content_location_carousel");
+      page.classList.add("page_no-mobile-bar");
+      return;
+    }
 
     renderDeckView(currentDeck);
     page.classList.remove("page_no-mobile-bar");

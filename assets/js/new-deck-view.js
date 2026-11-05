@@ -29,19 +29,66 @@ function normalizeColor(value) {
   return `#${hex.toLowerCase()}`;
 }
 
+function showError(message) {
+  errorMessage.textContent = message;
+  errorModal.classList.add("modal_visible");
+}
+
+function validateName(name) {
+  if (typeof name !== "string" || name.length < 2 || name.length > 80) {
+    return null;
+  }
+
+  return name;
+}
+
+function parseJSON(jsonString) {
+  try {
+    return JSON.parse(jsonString);
+  } catch (error) {
+    return null;
+  }
+}
+
 function handleNewDeckSubmit(e) {
   e.preventDefault();
 
   const formData = new FormData(newDeckForm);
   const inputValues = Object.fromEntries(formData);
 
-  const jsonData = JSON.parse(inputValues["deck-json"]);
-  const color = normalizeColor(inputValues.color);
+  const jsonData = parseJSON(inputValues["deck-json"]);
+
+  if (jsonData === null) {
+    showError("Invalid JSON. Please check the syntax and try again.");
+    return;
+  }
+
+  if (validateName(jsonData.name) === null) {
+    showError("The deck name must be a string between 2 and 80 characters.");
+    return;
+  }
+
+  if (!Array.isArray(jsonData.cards)) {
+    showError('The deck must contain a "cards" field that is an array.');
+    return;
+  }
+
+  const colorValue = normalizeColor(inputValues.color);
+
+  if (
+    typeof jsonData.color === "string" &&
+    jsonData.color.toLowerCase() !== colorValue
+  ) {
+    showError(
+      "The color in your JSON must match the color selected in the color picker.",
+    );
+    return;
+  }
   const id = `${slugify(jsonData.name)}-${Date.now()}`;
 
   decks.push({
     id,
-    color,
+    color: colorValue,
     name: jsonData.name,
     cards: jsonData.cards,
   });
@@ -50,3 +97,11 @@ function handleNewDeckSubmit(e) {
 }
 
 newDeckForm.addEventListener("submit", handleNewDeckSubmit);
+
+const errorModal = document.querySelector("#error-modal");
+const errorCloseBtn = errorModal.querySelector(".modal__close");
+const errorMessage = errorModal.querySelector(".modal__error");
+
+errorCloseBtn.addEventListener("click", function () {
+  errorModal.classList.remove("modal_visible");
+});
