@@ -29,7 +29,7 @@ function normalizeColor(value) {
   return `#${hex.toLowerCase()}`;
 }
 
-function showError(message) {
+export function showError(message) {
   errorMessage.textContent = message;
   errorModal.classList.add("modal_visible");
 }

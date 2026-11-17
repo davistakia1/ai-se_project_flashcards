@@ -3,6 +3,8 @@ import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
 import { disableSubmitBtn } from "./new-deck-view.js";
+import { getDecks } from "./api.js";
+import { showError } from "./new-deck-view.js";
 
 const page = document.querySelector(".page");
 const mobileBar = document.querySelector(".mobile-bar");
@@ -126,11 +128,18 @@ function renderCurrentView() {
   }
 }
 
-decks.forEach(renderDeckEl);
-
 window.addEventListener("hashchange", renderCurrentView);
 
-renderCurrentView();
+document.addEventListener("DOMContentLoaded", () => {
+  getDecks()
+    .then((decks) => {
+      decks.forEach(renderDeckEl);
+    })
+    .catch(showError)
+    .finally(() => {
+      renderCurrentView();
+    });
+});
 
 const newDeckButton = document.querySelector("#home .gallery__new-card-btn");
 
