@@ -1,4 +1,4 @@
-import { decks, getDeckByID } from "./decks.js";
+import { fetchedDecks, getDeckByID } from "./decks.js";
 import { hexToString } from "./colors.js";
 import { renderCarouselView } from "./carousel.js";
 import { renderDeckView } from "./deck-view.js";
@@ -28,7 +28,7 @@ function createDeckEl(item) {
     .cloneNode(true);
 
   const deckLink = deckElement.querySelector(".card__link");
-  deckLink.href = `#deck/${item.id}`;
+  deckLink.href = `#deck/${item._id}`;
   // Set the deck title
 
   deckElement.querySelector(".card__title").textContent = item.name;
@@ -117,7 +117,7 @@ function renderCurrentView() {
     page.classList.remove("page_no-mobile-bar");
 
     deckPracticeButton.onclick = () => {
-      window.location.hash = `#carousel/${currentDeck.id}`;
+      window.location.hash = `#carousel/${currentDeck._id}`;
     };
 
     showView(deckSection, "block");
@@ -130,16 +130,19 @@ function renderCurrentView() {
 
 window.addEventListener("hashchange", renderCurrentView);
 
-document.addEventListener("DOMContentLoaded", () => {
-  getDecks()
-    .then((decks) => {
+document
+  .addEventListener("DOMContentLoaded", () => {
+    getDecks().then((decks) => {
+      fetchedDecks.push(...decks);
       decks.forEach(renderDeckEl);
-    })
-    .catch(showError)
-    .finally(() => {
-      renderCurrentView();
     });
-});
+
+    decks.forEach(renderDeckEl);
+  })
+  .catch(showError)
+  .finally(() => {
+    renderCurrentView();
+  });
 
 const newDeckButton = document.querySelector("#home .gallery__new-card-btn");
 

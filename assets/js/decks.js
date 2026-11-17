@@ -759,14 +759,15 @@ const decks = [
   },
 ];
 
+const fetchedDecks = [];
+
 /**
- * Retrieves a deck object by its ID from the decks array.
- *
- * @param {string} deckId - The unique identifier of the deck to retrieve
- * @returns {object|undefined} The deck object if found, undefined otherwise
+ * Finds a fetched deck by its database ID.
+ * @param {string} deckId - The ID of the deck to find.
+ * @returns {object|undefined} The matching deck, or undefined if none matches.
  */
 function getDeckByID(deckId) {
-  return decks.find((deck) => deck.id === deckId);
+  return fetchedDecks.find((deck) => deck._id === deckId);
 }
 
-export { decks, getDeckByID };
+export { decks, fetchedDecks, getDeckByID };
