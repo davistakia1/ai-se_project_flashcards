@@ -1,4 +1,5 @@
-import { decks } from "./decks.js";
+import { addDeck } from "./api.js";
+import { fetchedDecks } from "./decks.js";
 
 const newDeckForm = document.querySelector("#new-deck-form");
 const submitBtn = newDeckForm.querySelector(".new-deck-view__submit-btn");
@@ -84,16 +85,17 @@ function handleNewDeckSubmit(e) {
     );
     return;
   }
-  const id = `${slugify(jsonData.name)}-${Date.now()}`;
-
-  decks.push({
-    id,
-    color: colorValue,
+  addDeck({
     name: jsonData.name,
+    color: document.querySelector('#new-deck-form input[name="color"]:checked')
+      .value,
     cards: jsonData.cards,
-  });
-
-  window.location.hash = "deck/" + id;
+  })
+    .then((newDeck) => {
+      fetchedDecks.push(newDeck);
+      window.location.hash = "deck/" + newDeck._id;
+    })
+    .catch(showError);
 }
 
 newDeckForm.addEventListener("submit", handleNewDeckSubmit);

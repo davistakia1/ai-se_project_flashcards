@@ -20,8 +20,7 @@ const deckPracticeButton = document.querySelector(
 
 const mainContent = document.querySelector(".page__main-content");
 const deckTemplate = document.querySelector("#deck-template");
-const deckList = document.querySelector(".gallery__list");
-
+const deckList = document.querySelector("#home .gallery__list");
 function createDeckEl(item) {
   const deckElement = deckTemplate.content
     .querySelector(".card")
@@ -63,7 +62,7 @@ function createDeckEl(item) {
 
 function renderDeckEl(item) {
   const deckElement = createDeckEl(item);
-
+  deckElement.dataset.deckId = item._id;
   deckList.prepend(deckElement);
 }
 function showView(currentSection, display) {
@@ -84,6 +83,12 @@ function renderCurrentView() {
   mobileBar.style.display = hash === "#home" ? "" : "none";
 
   if (hash === "#home") {
+    deckList.querySelectorAll("[data-deck-id]").forEach((deckElement) => {
+      deckElement.remove();
+    });
+
+    fetchedDecks.forEach(renderDeckEl);
+
     showView(homeSection, "block");
     mainContent.classList.remove("page__main-content_location_carousel");
     page.classList.remove("page_no-mobile-bar");
@@ -138,19 +143,17 @@ function renderCurrentView() {
 
 window.addEventListener("hashchange", renderCurrentView);
 
-document
-  .addEventListener("DOMContentLoaded", () => {
-    getDecks().then((decks) => {
+document.addEventListener("DOMContentLoaded", () => {
+  getDecks()
+    .then((decks) => {
       fetchedDecks.push(...decks);
       decks.forEach(renderDeckEl);
+    })
+    .catch(showError)
+    .finally(() => {
+      renderCurrentView();
     });
-
-    decks.forEach(renderDeckEl);
-  })
-  .catch(showError)
-  .finally(() => {
-    renderCurrentView();
-  });
+});
 
 const newDeckButton = document.querySelector("#home .gallery__new-card-btn");
 

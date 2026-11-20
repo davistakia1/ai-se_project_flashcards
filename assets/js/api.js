@@ -22,3 +22,22 @@ export function deleteDeck(deckId) {
     headers,
   }).then(processResponse);
 }
+export function addDeck({ name, color, cards }) {
+  return fetch(`${baseUrl}/decks`, {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ name, color, cards }),
+  })
+    .then(processResponse)
+    .then((newDeck) => {
+      return getDecks().then((decks) => {
+        const savedDeck = decks.find((deck) => deck._id === newDeck._id);
+
+        if (!savedDeck) {
+          return Promise.reject("Could not load the newly created deck.");
+        }
+
+        return savedDeck;
+      });
+    });
+}
