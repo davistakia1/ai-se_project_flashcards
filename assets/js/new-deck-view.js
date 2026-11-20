@@ -9,13 +9,6 @@ export function disableSubmitBtn() {
   submitBtn.disabled = false;
 }
 
-function slugify(str) {
-  return str
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
 function normalizeColor(value) {
   if (!value) {
     return "#64d583";
